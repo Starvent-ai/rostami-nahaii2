@@ -1,0 +1,52 @@
+.pinlock-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) 0;
+}
+
+.pinlock-panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  padding: var(--space-6);
+  width: min(340px, 90vw);
+  text-align: center;
+}
+
+.pinlock-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gold-100);
+  margin-bottom: var(--space-2);
+}
+
+.pinlock-subtitle {
+  font-size: 12.5px;
+  color: var(--text-400);
+  margin-bottom: var(--space-4);
+}
+
+.pinlock-input {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.4em;
+  font-size: 22px;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-100);
+  margin-bottom: var(--space-3);
+}
+.pinlock-input:focus {
+  outline: none;
+  border-color: var(--gold-500);
+}
+
+.pinlock-error {
+  color: var(--danger);
+  font-size: 12.5px;
+  margin-bottom: var(--space-3);
+}

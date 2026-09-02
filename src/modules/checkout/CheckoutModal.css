@@ -1,0 +1,103 @@
+.checkout-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.checkout-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--text-400);
+  padding: var(--space-1) 0;
+}
+
+.checkout-row.total {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gold-100);
+}
+
+.checkout-row-rounded {
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+.checkout-override-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12.5px;
+  color: var(--text-400);
+  margin-bottom: var(--space-3);
+  cursor: pointer;
+}
+
+.checkout-input {
+  width: 100%;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-100);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  margin-bottom: var(--space-3);
+}
+.checkout-input:focus {
+  outline: none;
+  border-color: var(--gold-500);
+}
+
+.checkout-methods {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.checkout-method {
+  flex: 1;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-400);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  transition: background-color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+.checkout-method:hover {
+  border-color: var(--gold-500);
+}
+.checkout-method.active {
+  background: rgba(227, 191, 92, 0.12);
+  border-color: var(--gold-300);
+  color: var(--gold-100);
+}
+
+.checkout-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.checkout-error {
+  color: var(--danger);
+  font-size: 12.5px;
+  margin-top: var(--space-2);
+}
+
+.checkout-adjust-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+.checkout-adjust-row .checkout-input {
+  margin: 0;
+}

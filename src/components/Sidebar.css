@@ -1,0 +1,116 @@
+.sidebar {
+  width: 248px;
+  flex: none;
+  height: 100%;
+  background: var(--surface);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  gap: var(--space-5);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2);
+}
+
+.sidebar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(155deg, var(--gold-100), var(--gold-500));
+  color: #1a1206;
+  font-size: 16px;
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.sidebar-club {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-100);
+}
+
+.sidebar-powered {
+  font-size: 11px;
+  color: var(--text-600);
+  letter-spacing: 0.02em;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-400);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-align: right;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.sidebar-item:hover {
+  background: var(--surface-raised);
+  color: var(--text-100);
+}
+
+.sidebar-item.active {
+  background: rgba(227, 191, 92, 0.1);
+  border-color: rgba(227, 191, 92, 0.25);
+  color: var(--gold-100);
+}
+
+.sidebar-icon {
+  width: 20px;
+  text-align: center;
+  color: var(--gold-300);
+  font-size: 14px;
+}
+
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-employee-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgba(52, 199, 123, 0.15);
+}
+
+.sidebar-employee-name {
+  font-size: 13px;
+  color: var(--text-100);
+}
+
+.sidebar-employee-caption {
+  font-size: 11px;
+  color: var(--text-600);
+}

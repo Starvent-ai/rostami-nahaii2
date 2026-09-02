@@ -1,0 +1,174 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.kpi-label {
+  font-size: 12.5px;
+  color: var(--text-600);
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-100);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-value.gold {
+  color: var(--gold-100);
+}
+
+.kpi-empty {
+  color: var(--text-600);
+  font-size: 13px;
+}
+
+.kpi-breakdown {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 11.5px;
+  color: var(--text-400);
+  flex-wrap: wrap;
+}
+
+.kpi-breakdown-stacked {
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.revenue-trend-chart {
+  padding-top: var(--space-3);
+}
+
+.revenue-trend-svg {
+  width: 100%;
+  height: 180px;
+  overflow: visible;
+}
+
+.trend-gridline {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.trend-dot {
+  fill: var(--surface-raised);
+  stroke: var(--gold-300);
+  stroke-width: 2;
+}
+
+.trend-dot-today {
+  fill: var(--gold-100);
+  stroke: var(--gold-500);
+}
+
+.trend-today-label {
+  fill: var(--gold-100);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.revenue-trend-labels {
+  position: relative;
+  height: 16px;
+  margin-top: var(--space-2);
+  font-size: 10.5px;
+  color: var(--text-600);
+}
+
+.revenue-trend-labels span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.hour-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 140px;
+  padding-top: var(--space-3);
+}
+
+.hour-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  gap: 4px;
+}
+
+.hour-bar {
+  width: 100%;
+  min-height: 2px;
+  background: linear-gradient(180deg, var(--gold-300), var(--gold-700));
+  border-radius: 3px 3px 0 0;
+  transition: height var(--duration-slow) var(--ease);
+}
+
+.hour-label {
+  font-size: 9px;
+  color: var(--text-600);
+}
+
+.type-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.type-bar-row {
+  display: grid;
+  grid-template-columns: 20px 110px 1fr 90px;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 12.5px;
+}
+
+.type-bar-icon {
+  font-size: 14px;
+  text-align: center;
+}
+
+.type-bar-label {
+  color: var(--text-400);
+}
+
+.type-bar-track {
+  height: 8px;
+  background: var(--surface-raised);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.type-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-500), var(--gold-100));
+  transition: width var(--duration-slow) var(--ease);
+}
+
+.type-bar-value {
+  color: var(--text-100);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}

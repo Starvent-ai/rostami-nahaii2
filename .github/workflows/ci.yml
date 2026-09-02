@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck (renderer)
+        run: npx tsc -b
+
+      - name: Typecheck (electron main/preload)
+        run: npx tsc -p electron/tsconfig.json
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Build (renderer + electron)
+        run: npm run build
+
+      - name: Package Windows installer
+        run: npx electron-builder --win --publish never
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: starvent-club-manager-windows
+          path: release/*.exe

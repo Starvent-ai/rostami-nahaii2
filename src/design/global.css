@@ -1,0 +1,72 @@
+@import "vazirmatn/Vazirmatn-Variable-font-face.css";
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 8% 15%, var(--bg-fleck-1) 0, transparent 22%),
+    radial-gradient(circle at 92% 8%, var(--bg-fleck-2) 0, transparent 20%),
+    radial-gradient(circle at 75% 85%, var(--bg-fleck-1) 0, transparent 25%),
+    radial-gradient(circle at 20% 90%, var(--bg-fleck-3) 0, transparent 20%),
+    repeating-linear-gradient(115deg, var(--bg-fleck-3) 0px, transparent 1.5px, transparent 14px),
+    repeating-linear-gradient(25deg, var(--bg-fleck-2) 0px, transparent 1px, transparent 22px);
+  color: var(--text-100);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(227, 191, 92, 0.28);
+  color: var(--text-100);
+}
+
+/* Slim, quiet scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--silver-700);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

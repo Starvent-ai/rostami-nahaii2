@@ -1,0 +1,73 @@
+{
+  "name": "artuor-app",
+  "private": true,
+  "version": "0.0.0",
+  "description": "نرم‌افزار مدیریت باشگاه کافه بیلیارد/گیمینگ — محصول Starvent",
+  "author": "Starvent",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc -b && tsc -p electron/tsconfig.json && node -e \"require('fs').mkdirSync('dist-electron/db',{recursive:true});require('fs').copyFileSync('electron/db/schema.sql','dist-electron/db/schema.sql');require('fs').copyFileSync('build-resources/icon.png','dist-electron/icon.png')\" && vite build",
+    "electron:dev": "npm run build && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "electron:start": "npm run build && electron .",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "ir.starvent.clubmanager",
+    "productName": "Starvent-club",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "nsis": {
+      "artifactName": "Starvent-club-Setup-${version}.exe"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build-resources/icon.ico"
+    },
+    "asarUnpack": [
+      "**/*.node"
+    ]
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.2",
+    "concurrently": "^10.0.4",
+    "cross-env": "^10.1.0",
+    "jalaali-js": "^2.0.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "wait-on": "^9.1.0",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "@vitest/ui": "^4.1.10",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "jsdom": "^30.0.1",
+    "oxlint": "^1.75.0",
+    "typescript": "~6.0.2",
+    "vazirmatn": "^33.0.3",
+    "vite": "^8.2.0",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,68 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: radial-gradient(circle at 50% 40%, #16130a 0%, #0a0806 65%, #050403 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 380ms var(--ease);
+}
+
+.splash-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  animation: splash-rise 900ms var(--ease);
+}
+
+@keyframes splash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.splash-logo {
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(201, 151, 44, 0.35));
+}
+
+.splash-wordmark {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold-100);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin-top: var(--space-2);
+}
+
+.splash-tagline {
+  font-size: 14px;
+  color: var(--silver-300);
+  letter-spacing: 0.02em;
+}
+
+.splash-slogan {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-400);
+  padding: 0 var(--space-6);
+}

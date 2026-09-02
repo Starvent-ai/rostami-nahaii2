@@ -1,0 +1,47 @@
+.opentabs-window {
+  height: 100vh;
+  padding: var(--space-5);
+  font-family: var(--font-sans);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.opentabs-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+.opentabs-window-header h1 {
+  font-size: 20px;
+  color: var(--gold-100);
+  margin: 0;
+}
+
+.opentabs-window-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.opentabs-window-toolbar .opentabs-search {
+  width: 260px;
+  margin: 0 !important;
+}
+
+.opentabs-window-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 760px;
+  flex: 1;
+  overflow-y: auto;
+  /* small inset so the scrollbar doesn't sit flush against row content */
+  padding-inline-end: var(--space-2);
+  padding-bottom: var(--space-3);
+}

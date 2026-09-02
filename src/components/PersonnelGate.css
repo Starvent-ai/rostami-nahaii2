@@ -1,0 +1,86 @@
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10, 8, 6, 0.45);
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gate-in 320ms var(--ease);
+}
+
+@keyframes gate-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gate-panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  padding: var(--space-6);
+  width: min(560px, 90vw);
+  text-align: center;
+}
+
+.gate-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--gold-100);
+  margin-bottom: var(--space-2);
+}
+
+.gate-subtitle {
+  font-size: 13px;
+  color: var(--text-400);
+  margin-bottom: var(--space-5);
+}
+
+.gate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-3);
+}
+
+.gate-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+.gate-person:hover {
+  border-color: var(--gold-300);
+  transform: translateY(-2px);
+  background: #1f1f26;
+}
+.gate-person:active {
+  transform: translateY(0);
+}
+
+.gate-person-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(155deg, var(--gold-100), var(--gold-500));
+  color: #1a1206;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.gate-person-name {
+  font-size: 13px;
+  color: var(--text-100);
+}

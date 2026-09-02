@@ -1,0 +1,279 @@
+.units-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.units-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-5);
+}
+
+.unit-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+
+.unit-card.status-playing {
+  border-color: rgba(227, 165, 60, 0.4);
+}
+.unit-card.status-reserved {
+  border-color: rgba(76, 143, 227, 0.4);
+}
+
+.units-section-title {
+  font-size: 13px;
+  color: var(--text-400);
+  margin: 0 0 var(--space-3);
+  font-weight: 600;
+}
+
+.unit-card-media {
+  position: relative;
+  height: 130px;
+  background: linear-gradient(155deg, var(--surface-raised), var(--bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+}
+
+.unit-illustration {
+  width: 100%;
+  height: 100%;
+}
+
+.unit-illustration-photo {
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  transition: filter var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+}
+/* Even when the club hasn't uploaded a distinct "occupied" photo for this
+   type, a colored ring + slight saturation boost around the same photo
+   makes an in-progress table/console clearly stand out from a free one. */
+.unit-illustration-photo.status-playing {
+  box-shadow: 0 0 0 3px var(--status-playing) inset;
+  filter: saturate(1.2) brightness(1.03);
+}
+.unit-illustration-photo.status-reserved {
+  box-shadow: 0 0 0 3px var(--status-reserved) inset;
+}
+
+.unit-status-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+.unit-status-badge.status-free {
+  background: rgba(52, 199, 123, 0.18);
+  color: var(--status-free);
+  border: 1px solid rgba(52, 199, 123, 0.35);
+}
+.unit-status-badge.status-playing {
+  background: rgba(227, 165, 60, 0.18);
+  color: var(--status-playing);
+  border: 1px solid rgba(227, 165, 60, 0.35);
+  animation: pulse-badge 2s var(--ease) infinite;
+}
+.unit-status-badge.status-reserved {
+  background: rgba(76, 143, 227, 0.18);
+  color: var(--status-reserved);
+  border: 1px solid rgba(76, 143, 227, 0.35);
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.unit-card-body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.unit-card-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.unit-card-title-row h4 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-100);
+}
+
+.unit-type {
+  font-size: 11.5px;
+  color: var(--text-600);
+}
+
+.unit-number-badge {
+  font-size: 11px;
+  color: var(--gold-300);
+  background: rgba(227, 191, 92, 0.12);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.unit-rate {
+  font-size: 12.5px;
+  color: var(--text-400);
+}
+
+.unit-timer-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.unit-timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold-100);
+  letter-spacing: 0.02em;
+}
+
+.unit-live-cost {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--silver-300);
+}
+
+.unit-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* Cafe POS modal grid */
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.pos-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-100);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+}
+.pos-item:hover:not(:disabled) {
+  background: var(--surface-raised);
+  border-color: var(--gold-500);
+}
+.pos-item:active:not(:disabled) {
+  background: #1f1f26;
+}
+.pos-item:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pos-item-price {
+  color: var(--gold-300);
+  font-size: 12px;
+}
+
+.pos-tab h4 {
+  font-size: 13px;
+  color: var(--text-400);
+  margin: 0 0 var(--space-2);
+}
+
+.pos-empty {
+  color: var(--text-600);
+  font-size: 13px;
+}
+
+.pos-tab-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.pos-tab-row span:first-child {
+  flex: 1;
+}
+
+.pos-tab-name {
+  flex: 1;
+}
+
+.tier-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.tier-picker-choice {
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-400);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  transition: background-color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+.tier-picker-choice:hover {
+  border-color: var(--gold-500);
+}
+.tier-picker-choice.active {
+  background: rgba(227, 191, 92, 0.12);
+  border-color: var(--gold-300);
+  color: var(--gold-100);
+}
+
+.tier-picker-total {
+  text-align: center;
+  font-weight: 600;
+  color: var(--gold-100);
+  margin-bottom: var(--space-4);
+}
+
+.pos-tab-remove {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.pos-tab-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  font-weight: 600;
+  color: var(--gold-100);
+}
