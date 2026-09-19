@@ -49,7 +49,7 @@ function UnitTypesSection() {
     return (
       <>
         <p className="settings-hint" style={{ marginTop: 'var(--space-4)' }}>
-          قیمت هر دسته‌ی {type.name} — با انتخاب چند دسته هنگام شروع بازی، مبلغ آن‌ها با هم جمع می‌شود.
+          قیمت هر دسته‌ی {type.name} — هر دسته یک نرخ مستقل و جداست؛ هنگام شروع بازی فقط قیمت همان دسته‌ی انتخاب‌شده حساب می‌شود (با دسته‌های دیگر جمع نمی‌شود).
         </p>
         {[1, 2, 3, 4].map((n) => (
           <div className="settings-list-row" key={n}>

@@ -102,20 +102,20 @@ describe('runCheckout', () => {
     expect(item.stock).toBe(7); // 10 - 3
   });
 
-  it('bills a PS unit by summing the selected number of cumulative tiers (§ very important)', () => {
+  it('bills a PS unit by the single selected tier\'s own price — NOT summed with the tiers below it (§ very important)', () => {
     db.prepare(
       `INSERT INTO unit_types (id, name, kind, hourly_rate, ps_tier1_price, ps_tier2_price, ps_tier3_price, ps_tier4_price, round_minutes)
        VALUES (2, 'PS', 'ps', 0, 30000, 25000, 20000, 15000, 15)`
     ).run();
     db.prepare(
       "INSERT INTO units (id, name, unit_type_id, status, start_time, active_tiers) VALUES (2, 'PS1', 2, 'playing', ?, 2)"
-    ).run(new Date(Date.now() - 58 * 60_000).toISOString()); // 58 minutes ago (safely inside the 45-60min block), 2 tiers selected
+    ).run(new Date(Date.now() - 58 * 60_000).toISOString()); // 58 minutes ago (safely inside the 45-60min block), tier 2 selected
 
     const result = runCheckout(db, { unitId: 2, paymentMethod: 'cash' }, nowIso);
 
-    // effective hourly rate = tier1 (30,000) + tier2 (25,000) = 55,000/hour
-    // exact cost for 58 minutes = 55,000 * 58/60 ≈ 53,166.7 → rounds to nearest 5,000 → 55,000
-    expect(result.unitAmount).toBe(55_000);
+    // effective hourly rate = tier2's own price alone (25,000/hour) — tier 1 is NOT added on top
+    // exact cost for 58 minutes = 25,000 * 58/60 ≈ 24,166.7 → rounds to nearest 5,000 → 25,000
+    expect(result.unitAmount).toBe(25_000);
   });
 });
 

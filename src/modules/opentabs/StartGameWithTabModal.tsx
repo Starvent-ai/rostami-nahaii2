@@ -65,12 +65,12 @@ function TiersStep({
 }) {
   const [tiers, setTiers] = useState(1);
   const tierPrices = [unit.ps_tier1_price, unit.ps_tier2_price, unit.ps_tier3_price, unit.ps_tier4_price];
-  const total = tierPrices.slice(0, tiers).reduce((s, p) => s + p, 0);
+  const total = tierPrices[tiers - 1] ?? 0;
 
   return (
     <Modal title={`تعداد دسته — ${unit.name}`} onClose={onBack} width={360}>
       <p className="settings-hint" style={{ marginTop: 0 }}>
-        تعداد دسته‌های فعال برای این بازی را انتخاب کنید
+        دسته‌ی این بازی را انتخاب کنید — هر دسته قیمت مستقل خودش را دارد
       </p>
       <div className="tier-picker-grid">
         {[1, 2, 3, 4].map((n) => (

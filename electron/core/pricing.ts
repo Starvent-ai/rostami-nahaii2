@@ -1,16 +1,20 @@
 /**
  * SQL expression computing the effective hourly rate for a joined
  * units+unit_types row (aliased "u" and "ut"). Billiard units use their flat
- * hourly_rate; PS units sum the first N tier prices, where N = u.active_tiers
- * (the "دسته" count chosen when the session started). Alias this AS
- * hourly_rate so downstream code can keep reading unit.hourly_rate unchanged.
+ * hourly_rate; PS units use the price of the ONE tier selected at session
+ * start (u.active_tiers, 1-4) — each دسته is its own flat rate, not summed
+ * with the tiers below it. Alias this AS hourly_rate so downstream code can
+ * keep reading unit.hourly_rate unchanged.
  */
 export const EFFECTIVE_HOURLY_RATE_SQL = `
   CASE WHEN ut.kind = 'ps' THEN
-    (CASE WHEN COALESCE(u.active_tiers,0) >= 1 THEN ut.ps_tier1_price ELSE 0 END) +
-    (CASE WHEN COALESCE(u.active_tiers,0) >= 2 THEN ut.ps_tier2_price ELSE 0 END) +
-    (CASE WHEN COALESCE(u.active_tiers,0) >= 3 THEN ut.ps_tier3_price ELSE 0 END) +
-    (CASE WHEN COALESCE(u.active_tiers,0) >= 4 THEN ut.ps_tier4_price ELSE 0 END)
+    CASE COALESCE(u.active_tiers, 1)
+      WHEN 1 THEN ut.ps_tier1_price
+      WHEN 2 THEN ut.ps_tier2_price
+      WHEN 3 THEN ut.ps_tier3_price
+      WHEN 4 THEN ut.ps_tier4_price
+      ELSE ut.ps_tier1_price
+    END
   ELSE ut.hourly_rate END
 `;
 
